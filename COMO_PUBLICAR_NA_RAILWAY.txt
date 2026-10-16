@@ -1,0 +1,50 @@
+SAMIRA FARIA — COMO COLOCAR O SITE NA INTERNET (RAILWAY)
+
+IMPORTANTE: este pacote prepara a V7 para hospedagem. Ele nao publica sozinho e nao inclui o banco local.
+Acesse https://railway.com e https://github.com pelo computador.
+
+1) CRIAR REPOSITORIO PRIVADO NO GITHUB
+- Entre em https://github.com/new
+- Nome sugerido: site-samira-faria
+- Selecione PRIVATE (Privado). Nao inclua agendamentos, senhas ou o arquivo agenda.sqlite3.
+- Abra o repositorio, clique Add file > Upload files.
+- Extraia este ZIP e envie os ARQUIVOS DA RAIZ extraida, incluindo Dockerfile, app.py, a pasta static e o .dockerignore.
+- O Dockerfile precisa ficar na raiz do repositorio, na mesma pasta de app.py.
+- Confirme a criacao dos arquivos (Commit changes).
+
+2) CRIAR PROJETO NA RAILWAY
+- Em https://railway.com/new, escolha Deploy from GitHub repo.
+- Conecte sua conta GitHub e selecione o repositorio privado criado.
+- Abra o servico e va em Variables. Defina:
+  ADMIN_EMAIL = um e-mail que a Samira controla
+  ADMIN_PASSWORD = escolha uma senha longa e forte, com pelo menos 10 caracteres
+  DATA_DIR = /data
+  HOST = 0.0.0.0
+  COOKIE_SECURE = 1
+  (PORT: normalmente o Railway fornece esta variavel automaticamente; nao precisa configurar.)
+- Adicione um Volume persistente no MESMO servico com Mount Path: /data.
+- Em Deployments, aguarde a implantacao. Confira logs caso apareca erro.
+- Em Settings > Networking > Public Networking, clique Generate Domain.
+- Use o endereco HTTPS gerado. Exemplo ilustrativo: https://site-samira-xxx.up.railway.app
+
+3) PRIMEIRO ACESSO
+- Abra o link publico, entre com ADMIN_EMAIL e ADMIN_PASSWORD.
+- Confira horarios de atendimento, categorias, valores e WhatsApp 11 94922-2083.
+- Para notificacao por e-mail: ATENCAO! O Railway bloqueia conexoes SMTP nos planos Free, Trial e Hobby. O envio SMTP da versao V7 funciona apenas se o plano permitir SMTP (Pro ou superior, conforme documentacao atual). Para planos inferiores sera necessario adaptar o site a um servico de e-mail por API HTTPS (ex.: Resend). O WhatsApp com mensagem pronta nao depende de SMTP.
+- Teste um cadastro e reserva com dados de teste antes de divulgar.
+
+ATENCAO AOS DADOS:
+- O banco publico sera NOVO e comecara vazio (com os servicos padrao).
+- Os agendamentos antigos do computador NAO sao migrados automaticamente.
+- Nunca envie a pasta data para o GitHub. A migracao segura deve ser feita por backup e upload ao volume privado, com o servidor desligado, se necessaria.
+- Faça backups regulares da area /data no Railway (SQLite usa agenda.sqlite3 e arquivos -wal/-shm durante operacao).
+- Este projeto usa um servidor Python proprio. Antes de receber clientes reais, recomendo revisar seguranca (limite de tentativas de login, protecao de dados, privacidade/LGPD) e testar notificacoes e backups.
+- A hospedagem pode ter custos recorrentes. Consulte a pagina de precos do Railway antes de contratar.
+- Se estiver migrando uma versao ja em producao, guarde backup antes de alterar o volume.
+
+Links oficiais:
+https://docs.railway.com/quick-start
+https://docs.railway.com/volumes
+https://docs.railway.com/networking/public-networking
+
+Limitacao de SMTP no Railway: https://docs.railway.com/networking/outbound-networking

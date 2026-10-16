@@ -1,0 +1,46 @@
+SAMIRA FARIA - VERSAO PARA CELULAR V6
+====================================
+
+O site e responsivo e utiliza o MESMO banco de dados de agendamentos.
+E um site instalavel na tela inicial (PWA quando publicado sob HTTPS), nao um APK.
+
+TESTAR NO CELULAR USANDO O COMPUTADOR (REDE LOCAL)
+1. Extraia os arquivos em uma pasta no computador Windows.
+2. Se voce ja tinha a versao anterior, copie sua pasta "data" original para dentro de Samira_Faria_Site
+   ou, preferencialmente, use apenas o ZIP de atualizacao para preservar seus dados.
+3. Execute ABRIR_NO_CELULAR_WIFI.bat. Mantenha a janela aberta.
+4. Computador e celular devem estar na MESMA rede Wi-Fi, sem isolamento de clientes.
+5. Na tela preta aparecera o endereco IP do computador. Exemplo: 192.168.1.10.
+6. No Chrome ou Safari do celular, abra http://192.168.1.10:8080 (troque pelo seu IP).
+7. Se o Windows solicitar autorizacao de rede, autorize SOMENTE redes privadas.
+8. Se nao funcionar, verifique Windows Firewall, a rede Wi-Fi e se o servidor ainda esta aberto.
+
+IMPORTANTE: 127.0.0.1 no celular e o PROPRIO CELULAR, nao o PC.
+HTTP em rede local nao oferece criptografia. Utilize apenas na rede de confianca para TESTES.
+NAO abra a porta 8080 no roteador nem compartilhe esse IP na internet.
+
+INSTALAR COMO APP (Android e iPhone)
+- Publicado num dominio com HTTPS:
+  Android/Chrome: menu ⋮ > Instalar app ou Adicionar a tela inicial.
+  iPhone/Safari: Compartilhar > Adicionar a Tela de Inicio.
+- Na rede local por HTTP, so pode funcionar como atalho, dependendo do navegador.
+- Mesmo instalado, a agenda depende do servidor e da conexao; nao ha reservas offline.
+
+USAR EM QUALQUER LUGAR
+Para funcionar pelo 4G/5G ou sem PC ligado, publique a aplicacao em uma hospedagem Python
+com HTTPS, variaveis HOST=0.0.0.0 e PORT da hospedagem, e um volume de dados PERSISTENTE.
+Guarde a pasta "data" fora de pastas temporarias; configure backups e dominio.
+Se houver proxy HTTPS, defina COOKIE_SECURE=1 no servidor.
+O servidor Python incorporado e adequado a testes e pequena instalacao local; para publicacao
+comercial use infraestrutura de hospedagem gerenciada, controles de acesso e backup.
+
+WHATSAPP
+Numero configurado: 11 94922-2083 (5511949222083).
+
+EMAIL
+As notificacoes por e-mail devem ser configuradas pelo Painel Admin > Notificacoes.
+Sem SMTP e e-mail configurados, o cadastro de agendamento funciona, mas nao manda alerta.
+Os envios sao feitos apos a reserva ser salva para evitar perda de agendamentos.
+
+SEGURANCA
+Nunca compartilhe a senha administrativa nem a senha SMTP.

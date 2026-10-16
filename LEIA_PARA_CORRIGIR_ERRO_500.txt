@@ -1,0 +1,41 @@
+SAMIRA FARIA — CORREÇÃO DO ERRO 500 NA RAILWAY
+============================================
+
+Erro confirmado nos logs:
+FileNotFoundError: /app/static/index.html
+
+O Python inicia, mas a página inicial está ausente do contêiner.
+Este ZIP contém os arquivos que o servidor precisa. Os arquivos estavam presentes
+no ZIP anterior; é preciso assegurar que chegaram ao GitHub no caminho correto.
+
+1) EXTRAI ESTE ZIP no computador. NÃO faça upload do ZIP fechado ao GitHub.
+2) Confira se app.py, Dockerfile e a pasta static estão no mesmo nível.
+   Estrutura correta no GitHub:
+       app.py
+       Dockerfile
+       static/
+           index.html
+           app.js
+           style.css
+           assets/ ...
+3) Abra seu repositório atual do GitHub. Use Add file > Upload files.
+   Arraste OS ARQUIVOS E A PASTA static de dentro da pasta extraída.
+   Commit changes. Caso existam arquivos com o mesmo nome, substitua-os.
+4) Na Railway, abra o serviço > Configurações e confira:
+   Root Directory: / (se os arquivos estiverem na raiz do GitHub)
+   Volume mount path: /data, NUNCA /app nem /app/static
+   HOST: 0.0.0.0
+   DATA_DIR: /data
+   PORT: 8080, se o domínio está apontando para a porta 8080
+5) Railway > Implantações: aguarde a nova implantação. Se preciso, faça Redeploy.
+   O Dockerfile agora verifica a existência de static/index.html no momento do build.
+6) Acesse o domínio já criado. Não é necessário gerar outro domínio.
+
+SEGURANÇA:
+A senha administrativa apareceu numa captura de logs. Troque-a imediatamente.
+Se o banco de dados já contém o usuário, mudar ADMIN_PASSWORD não altera
+automaticamente a senha antiga: entre no painel > Segurança e altere-a lá.
+Não publique a pasta data nem os arquivos .sqlite3 no GitHub.
+
+SE AINDA FALHAR:
+Capture os logs mais recentes em Construir Logs e Implantar Logs.

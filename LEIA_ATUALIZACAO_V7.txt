@@ -1,0 +1,22 @@
+SAMIRA FARIA - ATUALIZAÇÃO V7 - NATAL E SERVIÇOS SEM REPETIÇÃO
+
+1. Feche o servidor start.bat / a janela preta.
+2. Faça uma cópia de segurança da sua pasta data (clientes e reservas).
+3. Extraia o ZIP de ATUALIZAÇÃO V7 em uma pasta vazia.
+4. Copie app.py e a pasta static para dentro da sua pasta original Samira_Faria_Site, substituindo os arquivos.
+5. NÃO exclua nem substitua a pasta data.
+6. Inicie o site pelo start.bat ou ABRIR_NO_CELULAR_WIFI.bat.
+7. Atualize a página do navegador com Ctrl+F5 (ou feche e reabra o atalho do app no celular).
+
+CORREÇÕES:
+- Tema natalino em todas as páginas (faixa vinho/dourada, decoração botânica e nova mensagem na home).
+- Serviços de mesmo nome/categoria são exibidos apenas uma vez na vitrine e no agendamento. Nenhum cadastro antigo é excluído.
+- Resumo da reserva não repete o título do serviço.
+- Quando o título e a categoria são iguais (ex.: Micropigmentação), o cartão exibe apenas o título, sem repetição.
+- Cache V7 para quem instalou como aplicativo no celular (PWA).
+
+NOTIFICAÇÕES:
+- Em Painel Admin > Notificações, configure uma caixa de e-mail e SMTP.
+- O aviso automático só é enviado após essa configuração e depende da conexão com o servidor SMTP.
+
+IMPORTANTE: site roda localmente em seu computador e via Wi-Fi no celular. Fora da rede, é necessária publicação segura na internet com HTTPS.
